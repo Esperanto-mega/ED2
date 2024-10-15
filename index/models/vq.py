@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from .layers import kmeans, sinkhorn_algorithm
-
+from torch.distributions import Categorical
 
 class VectorQuantizer(nn.Module):
 
@@ -17,6 +17,8 @@ class VectorQuantizer(nn.Module):
         self.kmeans_iters = kmeans_iters
         self.sk_epsilon = sk_epsilon
         self.sk_iters = sk_iters
+
+        self.vmf = nn.Linear(self.e_dim, 1)
 
         self.embedding = nn.Embedding(self.n_e, self.e_dim)
         if not kmeans_init:
@@ -67,23 +69,18 @@ class VectorQuantizer(nn.Module):
         if not self.initted and self.training:
             self.init_emb(latent)
 
+        kappa = self.vmf(latent)
+
         # Calculate the L2 Norm between latent and Embedded weights
         d = torch.sum(latent**2, dim=1, keepdim=True) + \
             torch.sum(self.embedding.weight**2, dim=1, keepdim=True).t()- \
             2 * torch.matmul(latent, self.embedding.weight.t())
-        if not use_sk or self.sk_epsilon <= 0:
-            indices = torch.argmin(d, dim=-1)
-            # print("=======",self.sk_epsilon)
-        else:
-            # print("++++++++",self.sk_epsilon)
-            d = self.center_distance_for_constraint(d)
-            d = d.double()
-            Q = sinkhorn_algorithm(d,self.sk_epsilon,self.sk_iters)
-            # print(Q.sum(0)[:10])
-            Q = torch.nan_to_num(Q, Q[torch.isfinite(Q)].min().item())
-            if torch.isnan(Q).any() or torch.isinf(Q).any():
-                print(f"Sinkhorn Algorithm returns nan/inf values.")
-            indices = torch.argmax(Q, dim=-1)
+        d = -kappa * d
+
+        logit = -d
+        prob = torch.softmax(logit)
+        dist = Categorical(prob)
+        indices = dist.sample()
 
         # indices = torch.argmin(d, dim=-1)
 
@@ -100,5 +97,3 @@ class VectorQuantizer(nn.Module):
         indices = indices.view(x.shape[:-1])
 
         return x_q, loss, indices
-
-
