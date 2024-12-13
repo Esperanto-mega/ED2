@@ -130,25 +130,3 @@ trainer.train(resume_from_checkpoint = args.resume_from_checkpoint)
 
 trainer.save_state()
 trainer.save_model(output_dir = args.output_dir)
-
-if local_rank == 0:
-    # print('rqllama pre-train finished.')
-
-    import smtplib
-    from email.mime.text import MIMEText
-    mail_host = 'smtp.qq.com'
-    mail_code = 'ouzplpngooqndjcb'
-    sender = '1849334588@qq.com'
-    receiver = 'esperanto1949@foxmail.com'
-
-    task = '[v53: pretrain tt.ins.5e-4 w/o projector]'
-    message = MIMEText('Task {task} Finished'.format(task = task), 'plain', 'utf-8')
-    message['Subject'] = 'Auto Email'
-    message['From'] = sender
-    message['To'] = receiver
-
-    server = smtplib.SMTP_SSL("smtp.qq.com", 465)
-    server.login(sender, mail_code)
-    server.sendmail(sender, receiver, message.as_string())
-
-    server.quit()
