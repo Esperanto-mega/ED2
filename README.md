@@ -1,14 +1,14 @@
-Environment setup: pip install scikit-learn; pip install pandas; pip install deepgnn-torch==0.1.60 deepgnn-ge==0.1.60; pip install wandb==0.17.5; pip install peft; pip install accelerate; pip install openai; pip install Jinja2; pip install transformers==4.45.2
+**Environment setup**: pip install scikit-learn; pip install pandas; pip install deepgnn-torch==0.1.60 deepgnn-ge==0.1.60; pip install wandb==0.17.5; pip install peft; pip install accelerate; pip install openai; pip install Jinja2; pip install transformers==4.45.2
 
-Dataset: https://drive.google.com/drive/folders/1RcJ2M1l5zWPHYuGd9l5Gibcs5w5aI3y6
+**Dataset**: https://drive.google.com/drive/folders/1RcJ2M1l5zWPHYuGd9l5Gibcs5w5aI3y6
 
-ED2-Single Repo: https://huggingface.co/JayceAnova/Benchmark-Single/tree/main
+ED2-**Single** Repo: https://huggingface.co/JayceAnova/Benchmark-Single/tree/main
 
-ED2-Dual Repo: https://huggingface.co/JayceAnova/Benchmark-Dual/tree/main
+ED2-**Dual** Repo: https://huggingface.co/JayceAnova/Benchmark-Dual/tree/main
 
-NOTE: The Single Repo does not use user attributes, and no user-related tasks are added during SFT. The user dataset needs to be constructed separately. I will complete the user data soon.
+**NOTE**: The Single Repo does not use user attributes, and no user-related tasks are added during SFT. The user dataset needs to be constructed separately. I will complete the user data soon.
 
-Reproduction:
+**Reproduction**:
 1. Pretrain RQ-VAE and save the checkpoint: Script locates at ED2/index/run.sh.
 2. Train the ED2 framework: Script locates at ED2/instruments_pretrain.sh.
 3. Finetune the ED2 framework without ID conflicts. If index collision is acceptable, this step can be skipped. Scripts locate at ED2/infer.sh and ED2/instruments_finetune.sh.
