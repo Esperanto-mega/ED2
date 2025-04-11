@@ -6,7 +6,7 @@ ED2-**Single** Repo: https://huggingface.co/JayceAnova/Benchmark-Single/tree/mai
 
 ED2-**Dual** Repo: https://huggingface.co/JayceAnova/Benchmark-Dual/tree/main
 
-**NOTE**: The Single Repo does not use user attributes, and no user-related tasks are added during SFT. The user dataset needs to be constructed separately. I will complete the user data soon.
+**NOTE**: The Single Repo does not use user attributes, and no user-related tasks are added during SFT. The user dataset is in **Instruments.inter.user.json**.
 
 **Reproduction**:
 1. Pretrain RQ-VAE and save the checkpoint: Script locates at ED2/index/run.sh.
@@ -19,7 +19,7 @@ ED2-**Dual** Repo: https://huggingface.co/JayceAnova/Benchmark-Dual/tree/main
 | LLM Backbone | Scale | Hidden Dim | Vocab Size |
 |--------------|-------|------------|------------|
 | GPT-2        | 124M  | 768        | 50257      |
-| *Ministral*  | 3B    | 4096       | 32000      |
+| Ministral    | 3B    | 4096       | 32000      |
 | LLaMA-3      | 8B    | 4096       | 128256     |
 
 <img width="835" alt="image" src="https://github.com/user-attachments/assets/db633259-4187-4e0e-9447-f60f93596c2e" />
