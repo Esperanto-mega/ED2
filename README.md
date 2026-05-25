@@ -33,7 +33,7 @@ ED2-**Dual** Repo: https://huggingface.co/JayceAnova/Benchmark-Dual/tree/main
 If this work is helpful, please consider citing it through,
 ```bibtex
 @inproceedings{ed22025,
-  title={Rel-MOSS: Towards Imbalanced Relational Deep Learning on Relational Databases},
+  title={{Unleash LLMs Potential for Sequential Recommendation by Coordinating Dual Dynamic Index Mechanism}},
   author={Jun Yin and Zhengxin Zeng and Mingzheng Li and Hao Yan and Chaozhuo Li and Weihao Han and Jianjin Zhang and Ruochen Liu and Hao Sun and Weiwei Deng and Feng Sun and Qi Zhang and Shirui Pan and Senzhang Wang},
   journal={Proceedings of the ACM on Web Conference},
   year={2025}
