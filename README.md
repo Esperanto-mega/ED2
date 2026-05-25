@@ -1,4 +1,4 @@
-Implementation of Unleash LLMs Potential for Sequential Recommendation by Coordinating Dual Dynamic Index Mechanism. WebConf 2025 (Oral).
+Unleash LLMs Potential for Sequential Recommendation by Coordinating Dual Dynamic Index Mechanism. WebConf 2025 (Oral).
 <img width="2272" height="780" alt="" src="https://github.com/user-attachments/assets/ed9aeda2-c7ed-47bf-95ed-fb1622353931" />
 
 - --
